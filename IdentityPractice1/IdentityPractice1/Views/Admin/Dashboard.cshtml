@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.title = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="app-page theme-admin">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark"></div>
+            <span>Nova</span>
+        </div>
+
+        <ul class="nav-list">
+            <li>
+                <a href="#" class="active">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <rect x="3" y="3" width="7" height="9" rx="1.5" />
+                        <rect x="14" y="3" width="7" height="5" rx="1.5" />
+                        <rect x="14" y="12" width="7" height="9" rx="1.5" />
+                        <rect x="3" y="16" width="7" height="5" rx="1.5" />
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <circle cx="9" cy="8" r="3.5" />
+                        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="18" cy="8" r="2.5" />
+                        <path d="M16 14c2.8.2 5 2.2 5 6" />
+                    </svg>
+                    Users
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" />
+                    </svg>
+                    Roles & Access
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.2.63.77 1.05 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                    </svg>
+                    System Settings
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <path d="M3 3v18h18" />
+                        <path d="M7 15l4-5 3 3 5-7" />
+                    </svg>
+                    Audit Logs
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="/Account/logout" class="btn-logout">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <path d="M16 17l5-5-5-5" />
+                    <path d="M21 12H9" />
+                </svg>
+                Log out
+            </a>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p class="subtitle">Full system overview and access control</p>
+            </div>
+            <div class="user-chip">
+                <div class="avatar">MK</div>
+                <div>
+                    <div class="name">@User.Identity?.Name</div>
+                    <div class="role">Administrator</div>
+                </div>
+            </div>
+        </div>
+
+        <span class="badge-role">Admin Access</span>
+
+        <div class="welcome-panel">
+            <h2>Welcome back, Mark</h2>
+            <p>
+                You're signed in with full administrator privileges. You have access
+                to user management, role permissions, and system-wide settings.
+            </p>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <circle cx="9" cy="8" r="3.5" />
+                        <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                        <circle cx="18" cy="8" r="2.5" />
+                        <path d="M16 14c2.8.2 5 2.2 5 6" />
+                    </svg>
+                </div>
+                <div class="stat-value">312</div>
+                <div class="stat-label">Total users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" />
+                    </svg>
+                </div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Active roles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9z" />
+                    </svg>
+                </div>
+                <div class="stat-value">99.98%</div>
+                <div class="stat-label">System uptime</div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>Recent Access Activity</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>jane.summers@nova.io</td>
+                        <td>Logged in</td>
+                        <td>Accountant</td>
+                        <td><span class="status-pill status-ok">Success</span></td>
+                    </tr>
+                    <tr>
+                        <td>r.diaz@nova.io</td>
+                        <td>Password reset</td>
+                        <td>Accountant</td>
+                        <td><span class="status-pill status-pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>unknown@external.com</td>
+                        <td>Failed login attempt</td>
+                        <td>—</td>
+                        <td><span class="status-pill status-warn">Blocked</span></td>
+                    </tr>
+                    <tr>
+                        <td>mark.keller@nova.io</td>
+                        <td>Updated role permissions</td>
+                        <td>Admin</td>
+                        <td><span class="status-pill status-ok">Success</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>

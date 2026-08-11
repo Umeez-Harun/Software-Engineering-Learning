@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.title = "Accounting Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="app-page theme-accountant">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-mark"></div>
+            <span>Nova</span>
+        </div>
+
+        <ul class="nav-list">
+            <li>
+                <a href="#" class="active">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <rect x="3" y="3" width="7" height="9" rx="1.5" />
+                        <rect x="14" y="3" width="7" height="5" rx="1.5" />
+                        <rect x="14" y="12" width="7" height="9" rx="1.5" />
+                        <rect x="3" y="16" width="7" height="5" rx="1.5" />
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <path d="M4 4h16v16H4z" />
+                        <path d="M8 9h8M8 13h8M8 17h5" />
+                    </svg>
+                    Invoices
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <path d="M3 3v18h18" />
+                        <path d="M7 15l4-5 3 3 5-7" />
+                    </svg>
+                    Reports
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 8v4l3 3" />
+                    </svg>
+                    Transactions
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+                    </svg>
+                    Profile
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a asp-controller="Account" asp-action="logout" class="btn-logout">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <path d="M16 17l5-5-5-5" />
+                    <path d="M21 12H9" />
+                </svg>
+                Log out
+            </a>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="topbar">
+            <div>
+                <h1>Accountant Dashboard</h1>
+                <p class="subtitle">
+                    Here's what's happening with your books today
+                </p>
+            </div>
+            <div class="user-chip">
+                <div class="avatar">JS</div>
+                <div>
+                    <div class="name">Jane Summers</div>
+                    <div class="role">Accountant</div>
+                </div>
+            </div>
+        </div>
+
+        <span class="badge-role">Accountant Access</span>
+
+        <div class="welcome-panel">
+            <h2>Welcome back, Jane</h2>
+            <p>
+                You're signed in with accountant-level access. This area is scoped
+                to financial records, invoicing, and reporting tools only.
+            </p>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H7" />
+                    </svg>
+                </div>
+                <div class="stat-value">$84,210</div>
+                <div class="stat-label">Revenue this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <path d="M4 4h16v16H4z" />
+                        <path d="M8 9h8M8 13h8M8 17h5" />
+                    </svg>
+                </div>
+                <div class="stat-value">37</div>
+                <div class="stat-label">Pending invoices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+                </div>
+                <div class="stat-value">128</div>
+                <div class="stat-label">Reconciled entries</div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h3>Recent Transactions</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Reference</th>
+                        <th>Client</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>INV-2291</td>
+                        <td>Blackwood Ltd</td>
+                        <td>$4,320.00</td>
+                        <td><span class="status-pill status-ok">Paid</span></td>
+                    </tr>
+                    <tr>
+                        <td>INV-2292</td>
+                        <td>Rivera & Co</td>
+                        <td>$1,875.50</td>
+                        <td><span class="status-pill status-pending">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>INV-2293</td>
+                        <td>Nova Studios</td>
+                        <td>$980.00</td>
+                        <td><span class="status-pill status-warn">Overdue</span></td>
+                    </tr>
+                    <tr>
+                        <td>INV-2294</td>
+                        <td>Everline Corp</td>
+                        <td>$6,120.00</td>
+                        <td><span class="status-pill status-ok">Paid</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
