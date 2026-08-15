@@ -1,0 +1,67 @@
+﻿@using ServiceContracts.DTO;
+@model List<EmployeeResponse>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main class="main">
+    <div class="topbar">
+        <div>
+            <h1>View Employees</h1>
+            <p class="subtitle">All registered employee records</p>
+        </div>
+        <div class="user-chip">
+            <div class="avatar"></div>
+            <div>
+                <div class="name">@User.Identity?.Name</div>
+                <div class="role">Administrator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h3>Employees</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Identification No.</th>
+                    <th class="col-action">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(EmployeeResponse res in @Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="emp-name">
+                                <div class="mini-avatar">RD</div>
+                                @res.fullName
+                            </div>
+                        </td>
+                        <td><span class="id-tag">@res.identificationNo</span></td>
+                        <td class="col-action">
+                            <a asp-action="lockUser" asp-controller="Admin" asp-area="Admin" asp-route-userID="@res.ApplicationUserId" class="btn-delete">
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="2">
+                                    <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6" />
+                                </svg>
+                                Lock Account
+                            </a>
+                            <a class="btn-delete" asp-action="DeleteEmployee" asp-controller="Admin" asp-area="Admin" asp-route-employeeID="@res.id">
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="2">
+                                    <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6" />
+                                </svg>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>

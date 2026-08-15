@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main class="main">
+    <div class="topbar">
+        <div>
+            <h1>Admin Dashboard</h1>
+            <p class="subtitle">Manage employees and system access</p>
+        </div>
+        <div class="user-chip">
+            <div class="avatar"></div>
+            <div>
+                <div class="name">@User.Identity?.Name</div>
+                <div class="role">Administrator</div>
+            </div>
+        </div>
+    </div>
+
+    <span class="badge-role">Admin Access</span>
+
+    <div class="welcome-panel">
+        <h2>Welcome back, Mark</h2>
+        <p>
+            You're signed in with full administrator privileges. Use the actions
+            below to manage your employee records and accounts.
+        </p>
+    </div>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2">
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                    <circle cx="18" cy="8" r="2.5" />
+                    <path d="M16 14c2.8.2 5 2.2 5 6" />
+                </svg>
+            </div>
+            <div class="stat-value">42</div>
+            <div class="stat-label">Total employees</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2">
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <path d="M3 9h18M8 4v5" />
+                </svg>
+            </div>
+            <div class="stat-value">6</div>
+            <div class="stat-label">Accounts created this month</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M12 8v4l3 3" />
+                </svg>
+            </div>
+            <div class="stat-value">3</div>
+            <div class="stat-label">Pending activations</div>
+        </div>
+    </div>
+
+    <div class="action-grid">
+        <a href="add-employee.html" class="action-tile">
+            <div class="tile-icon">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2">
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                    <path d="M18 8v6M15 11h6" />
+                </svg>
+            </div>
+            <h3>Add New Employee</h3>
+            <p>
+                Register a new employee record with their name and identification
+                number.
+            </p>
+            <span class="tile-arrow">
+                Go to page
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+            </span>
+        </a>
+
+        <a href="view-employees.html" class="action-tile">
+            <div class="tile-icon">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="2">
+                    <circle cx="9" cy="8" r="3.5" />
+                    <path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6" />
+                    <circle cx="18" cy="8" r="2.5" />
+                    <path d="M16 14c2.8.2 5 2.2 5 6" />
+                </svg>
+            </div>
+            <h3>View Employees</h3>
+            <p>
+                Browse all registered employees and remove records that are no
+                longer needed.
+            </p>
+            <span class="tile-arrow">
+                Go to page
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+            </span>
+        </a>
+    </div>
+</main>

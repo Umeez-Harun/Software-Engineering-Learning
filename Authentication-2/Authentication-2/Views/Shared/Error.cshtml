@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="auth-page">
+    <div class="card error-card">
+        <div class="error-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 9v4M12 17h.01" /><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /></svg>
+        </div>
+
+        <div class="error-code">Error 500</div>
+        <h1>Something went wrong</h1>
+        <p class="subtitle">An unexpected error occurred while processing your request.</p>
+        <p class="subtitle">@ViewBag.ErrorMessage</p>
+        <p>Please Notify the owner if the issue is not resolved</p>
+        <div class="error-detail">
+            Reference: REQ-2024-08153-A19F
+        </div>
+
+        <div class="error-actions">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Admin" asp-action="Dashboard" class="btn-primary">Go to Dashboard</a>
+            }
+            else if (User.IsInRole("Employee"))
+            {
+                <a asp-controller="Employee" asp-action="Dashboard" class="btn-primary">Go to Dashboard</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="login" class="btn-primary">Go to Dashboard</a>
+            }
+        </div>
+    </div>
+</div>

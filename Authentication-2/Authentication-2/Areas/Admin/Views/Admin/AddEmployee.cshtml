@@ -1,0 +1,48 @@
+﻿@using ServiceContracts.DTO;
+@model EmployeeRequest;
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main class="main">
+    <div class="topbar">
+        <div>
+            <h1>Add New Employee</h1>
+            <p class="subtitle">Create login credentials for a new employee</p>
+        </div>
+        <div class="user-chip">
+            <div class="avatar"></div>
+            <div>
+                <div class="name">@User.Identity?.Name ?? </div>
+                <div class="role">Administrator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card form-card">
+        <div class="form-header">
+            <h1>Employee Account</h1>
+            <p>This stores an employee information in the system</p>
+        </div>
+
+        <form asp-controller="Admin" asp-action="AddEmployee" asp-area="Admin" method="post">
+            <div class="field">
+                <label class="field-label">Employee name</label>
+                <input asp-for="@Model.fullName" type="text" placeholder="Enter employee name" required />
+                <span asp-validation-for="@Model.fullName"></span>
+            </div>
+            <div class="field">
+                <label class="field-label">Identification No.</label>
+                <input asp-for="@Model.identificatonNo" type="text" placeholder="e.g. EMP-00222" required />
+                <span asp-validation-for="@Model.identificatonNo"></span>
+                <input type="hidden" asp-for="@Model.userID" value="@Model.userID" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">
+                    Create Employee Account
+                </button>
+                <a href="view-employees.html" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</main>

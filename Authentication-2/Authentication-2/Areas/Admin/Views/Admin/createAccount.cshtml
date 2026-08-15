@@ -1,0 +1,69 @@
+﻿@using ServiceContracts.DTO;
+@model UserRequest;
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main class="main">
+    <div class="topbar">
+        <div>
+            <h1>Add New Employee</h1>
+            <p class="subtitle">Create login credentials for a new employee</p>
+        </div>
+        <div class="user-chip">
+            <div class="avatar"></div>
+            <div>
+                <div class="name">@User.Identity?.Name ?? "" </div>
+                <div class="role">Administrator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card form-card">
+        <div class="form-header">
+            <h1>Employee Account</h1>
+            <p>This Adds an  employee to the system</p>
+        </div>
+
+        <div class="content-card form-card">
+            <div class="form-header">
+                <h1>Account Details</h1>
+                <p>
+                    This account will be able to log in immediately after creation
+                </p>
+            </div>
+
+            <form asp-controller="Admin" asp-action="createAccount" asp-area="Admin">
+                <div class="field">
+                    <label class="field-label">Email address</label>
+                    <input asp-for="@Model.email" type="email" placeholder="name@company.com" required />
+                    <span asp-validation-for="@Model.email"></span>
+                </div>
+                
+                <div class="field">
+                    <label class="field-label">Account type</label>
+                    <select required asp-for="@Model.role">
+                        <option value="" disabled selected>Select account type</option>
+                        <option value="admin">Admin</option>
+                        <option value="employee">Employee</option>
+                    </select>
+                    <span asp-validation-for="@Model.role"></span>
+                </div>
+                <div class="field">
+                    <label class="field-label">Password</label>
+                    <input asp-for="@Model.password"  type="password" placeholder="Create a password" required />
+                    <span asp-validation-for="@Model.password"></span>
+                </div>
+                <div class="field">
+                    <label class="field-label">Confirm password</label>
+                    <input asp-for="@Model.confirmPassword" type="password" placeholder="Re-enter password" required />
+                    <span asp-validation-for="@Model.confirmPassword"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Create Account</button>
+                    <a href="admin-dashboard.html" class="btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Areas/Employee/Views/Shared/_Layout.cshtml";
+}
+<main class="main">
+    <div class="topbar">
+        <div>
+            <h1>Employee Dashboard</h1>
+            <p class="subtitle">Welcome to your workspace</p>
+        </div>
+        <div class="user-chip">
+            <div class="avatar">RD</div>
+            <div>
+                <div class="name">Rosa Diaz</div>
+                <div class="role">Employee</div>
+            </div>
+        </div>
+    </div>
+
+    <span class="badge-role">Employee Access</span>
+
+    <div class="welcome-panel">
+        <h2>Welcome back, Rosa</h2>
+        <p>
+            You're signed in with employee-level access. This confirms your
+            login and role-based permissions are working correctly.
+        </p>
+    </div>
+
+    <div class="content-card">
+        <h3>Your Profile</h3>
+        <table class="data-table">
+            <tbody>
+                <tr>
+                    <td style="width: 180px; color: #9a9ab0">Full name</td>
+                    <td>Rosa Diaz</td>
+                </tr>
+                <tr>
+                    <td style="color: #9a9ab0">Identification No.</td>
+                    <td><span class="id-tag">EMP-00218</span></td>
+                </tr>
+                <tr>
+                    <td style="color: #9a9ab0">Role</td>
+                    <td><span class="status-pill status-ok">Employee</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
