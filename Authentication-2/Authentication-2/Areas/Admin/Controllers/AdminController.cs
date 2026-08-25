@@ -6,7 +6,8 @@ using ServiceContracts.DTO;
 namespace Authentication_2.Areas.AdminArea.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
+    [AllowAnonymous]
     public class AdminController : Controller
     {
         private readonly IAccountService _accountService;
@@ -40,6 +41,7 @@ namespace Authentication_2.Areas.AdminArea.Controllers
             return View(employees);
         }
         [HttpGet]
+        [Route("/")]
         public IActionResult createAccount()
         {
             return View();

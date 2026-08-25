@@ -18,7 +18,8 @@ namespace Authentication_2.Controllers
             _accountService = accountService;
         }
         [AllowAnonymous]
-        [Route("/")]
+        //[Route("/")]
+        
         [HttpGet]
         public IActionResult login()
         {

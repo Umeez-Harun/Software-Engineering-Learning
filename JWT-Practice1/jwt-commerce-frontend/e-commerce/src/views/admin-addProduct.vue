@@ -1,5 +1,8 @@
 <script setup>
 import {ref, reactive} from 'vue'
+import general from '@/components/general.vue';
+import error from '@/components/error.vue';
+import confirmation from '@/components/confirmation.vue';
 
 const product = reactive({
   title: null,
@@ -9,8 +12,10 @@ const product = reactive({
   sku: null,
   description: null,
 })
+const isclicked = ref(false)
 
 async function addProduct(){
+  isclicked.value = true
   return;
 }
 </script>

@@ -566,3 +566,132 @@ textarea.form-textarea:focus { border-color: var(--brass-deep); box-shadow: 0 0 
   background: var(--paper-soft);
 }
 .empty-state h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); margin: 0.6rem 0 0.4rem; }
+
+/* =========================================================
+   MODALS — error / confirm / info
+   ========================================================= */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 40, 31, 0.55);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 100;
+  animation: overlay-fade 0.18s ease;
+}
+.modal-overlay.is-open { display: flex; }
+
+@keyframes overlay-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 30px 60px -20px rgba(22, 40, 31, 0.45);
+  padding: 2.1rem 2rem 1.8rem;
+  text-align: center;
+  position: relative;
+  animation: modal-pop 0.22s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+}
+
+@keyframes modal-pop {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.modal-close:hover { background: var(--paper); color: var(--ink); border-color: var(--ink-soft); }
+
+.modal-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.modal-icon--error {
+  background: rgba(162, 62, 50, 0.1);
+  color: var(--rust-deep);
+  border-color: rgba(162, 62, 50, 0.3);
+}
+.modal-icon--confirm {
+  background: rgba(184, 134, 59, 0.14);
+  color: var(--brass-deep);
+  border-color: rgba(184, 134, 59, 0.35);
+}
+.modal-icon--info {
+  background: rgba(35, 68, 56, 0.1);
+  color: var(--forest-deep);
+  border-color: rgba(35, 68, 56, 0.3);
+}
+
+.modal h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.55rem;
+}
+
+.modal p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 1.7rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+}
+.modal-actions .btn { flex: 1; }
+
+/* thin ledger rule under the header, used on the info popup */
+.modal-rule {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 0 0 1.4rem;
+}
+
+.modal-code {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--rust-deep);
+  background: rgba(162, 62, 50, 0.08);
+  border: 1px solid rgba(162, 62, 50, 0.25);
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.9rem;
+}
