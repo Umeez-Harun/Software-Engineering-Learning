@@ -10,9 +10,9 @@ namespace ServiceContracts.DTO
     {
         public string name {  get; set; } = string.Empty;
         public string email { get; set; } = string.Empty;
-        public DateTime expiresAt { get; set; }
         public string role { get; set; } = string.Empty;
         public string token { get; set; } = string.Empty;
-        public string refreshToken {  get; set; } = string.Empty;    
+        public string refreshToken {  get; set; } = string.Empty;
+        public DateTime expiresAt { get; set; }
     }
 }

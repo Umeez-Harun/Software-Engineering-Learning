@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260824181809_Initial")]
+    [Migration("20260826090738_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -106,6 +106,17 @@ namespace Entities.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("refeshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("refreshToken_expirationTime")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -124,7 +135,7 @@ namespace Entities.Migrations
                     b.Property<Guid>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWSEQUENTIALID");
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                     b.Property<string>("category")
                         .IsRequired()

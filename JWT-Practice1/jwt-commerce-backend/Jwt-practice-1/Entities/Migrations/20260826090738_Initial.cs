@@ -30,6 +30,9 @@ namespace Entities.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    refeshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    refreshToken_expirationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -160,7 +163,7 @@ namespace Entities.Migrations
                 name: "products",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID"),
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     title = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     category = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),

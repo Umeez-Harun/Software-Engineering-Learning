@@ -19,7 +19,7 @@ namespace Entities
 
             builder.Entity<Product>(entity =>
             {
-                entity.Property(e => e.id).HasDefaultValueSql("NEWSEQUENTIALID");
+                entity.Property(e => e.id).HasDefaultValueSql("NEWSEQUENTIALID()");
                 entity.HasIndex(e => e.seller_id);
                 entity.HasIndex(e => e.sku).IsUnique();
                 entity.Property(e => e.createdAt).HasDefaultValueSql("GETUTCDATE()");

@@ -56,8 +56,8 @@ namespace Services
         public async Task<List<ProductResponse>> getAvailableProducts()
         {
             return await _dbContext.products.Where(temp => temp.isDeleted == false)
-                .Select(temp => temp.convertToProductResponse())
                 .OrderByDescending(temp => temp.createdAt)
+                .Select(temp => temp.convertToProductResponse())
                 .ToListAsync();
         }
 
