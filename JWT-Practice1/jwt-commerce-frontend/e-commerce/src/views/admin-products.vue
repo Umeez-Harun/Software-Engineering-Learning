@@ -1,3 +1,32 @@
+<script setup>
+import api from '@/Axios/api';
+import { onMounted, ref } from 'vue';
+
+const products = ref([])
+async function getProducts(){
+  try{
+    const response = await api.get('/product')
+    products.value = response.data
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
+onMounted(() => {
+  getProducts()
+})
+
+async function deleteProduct(productID){
+  try{
+    const response = await api.delete(`/product/${productID}`)
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+</script>
+
 <template>
     <div class="main">
         <div class="content">
@@ -13,74 +42,23 @@
           </div>
 
           <div class="product-grid">
-            <article class="ticket">
-              <div class="ticket-media">M</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Home & Living</span>
-                <h3>Hand-thrown ceramic mug</h3>
-                <p>Matte glaze, holds 12oz, made in small batches.</p>
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$24.00<span>SKU LDG-0142</span></div>
-                <button type="submit" class="btn btn-danger btn-small">
-                  Delete
-                </button>
-              </div>
-            </article>
 
-            <article class="ticket">
+            <article class="ticket" v-for="product in products">
               <div class="ticket-media">S</div>
               <div class="ticket-body">
-                <span class="eyebrow">Apparel</span>
-                <h3>Waxed canvas apron</h3>
-                <p>Water resistant, adjustable strap, one size.</p>
+                <span class="eyebrow">{{product.title}}</span>
+                <h3>{{ product.category }}</h3>
+                <p>{{product.description}}</p>
               </div>
               <div class="ticket-perf"></div>
               <div class="ticket-stub">
-                <div class="price-tag">$58.00<span>SKU LDG-0098</span></div>
-                <button type="submit" class="btn btn-danger btn-small">
+                <div class="price-tag">{{product.price}}<span>{{product.sku}}</span></div>
+                <button @click="deleteProduct(product.id)" class="btn btn-danger btn-small">
                   Delete
                 </button>
               </div>
             </article>
 
-            <article class="ticket">
-              <div class="ticket-media">C</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Pantry</span>
-                <h3>Small-batch chili oil</h3>
-                <p>Sichuan peppercorn, cold-pressed, 200ml jar.</p>
-                <span
-                  class="badge badge-low"
-                  style="margin-top: 0.5rem; display: inline-block"
-                  >Low stock · 3 left</span
-                >
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$14.50<span>SKU LDG-0211</span></div>
-                <button type="submit" class="btn btn-danger btn-small">
-                  Delete
-                </button>
-              </div>
-            </article>
-
-            <article class="ticket">
-              <div class="ticket-media">T</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Accessories</span>
-                <h3>Woven market tote</h3>
-                <p>Undyed cotton, reinforced base, 40lb capacity.</p>
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$32.00<span>SKU LDG-0177</span></div>
-                <button type="submit" class="btn btn-danger btn-small">
-                  Delete
-                </button>
-              </div>
-            </article>
           </div>
         </div>
       </div>

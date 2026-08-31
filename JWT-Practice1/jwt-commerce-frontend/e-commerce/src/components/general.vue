@@ -1,3 +1,8 @@
+<script setup>
+  
+</script>
+
+
 <template>
     <div class="modal-overlay is-open">
   <div class="modal">

@@ -1,5 +1,7 @@
 <script setup>
 import {ref, reactive} from 'vue'
+import api from '../Axios/api'
+
 import general from '@/components/general.vue';
 import error from '@/components/error.vue';
 import confirmation from '@/components/confirmation.vue';
@@ -15,8 +17,12 @@ const product = reactive({
 const isclicked = ref(false)
 
 async function addProduct(){
-  isclicked.value = true
-  return;
+  try{
+    const response = await api.post('/product', product)
+  }
+  catch(err){
+    console.log(err)
+  }
 }
 </script>
 
@@ -47,9 +53,9 @@ async function addProduct(){
                 <label>Category</label>
                 <select v-model="product.category">
                   <option>Home & Living</option>
-                  <option>Apparel</option>
-                  <option selected>Accessories</option>
-                  <option>Pantry</option>
+                  <option>Electronics</option>
+                  <option selected>Food</option>
+                  <option>Clothing</option>
                 </select>
               </div>
 

@@ -1,8 +1,46 @@
+<script setup>
+import api from '@/Axios/api';
+import {ref, onMounted} from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const name = localStorage.getItem("name")
+const products = ref([])
+async function getProducts(){
+  try{
+    const response = await api.get('/product')
+    products.value = response.data;
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+onMounted(() => {
+  getProducts()
+})
+
+async function logout(){
+  try{
+    localStorage.removeItem("name")
+    localStorage.removeItem("token")
+    localStorage.removeItem("refreshToken")
+
+    const response = await api.get('/authentication/logout')
+    router.push("/")
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+</script>
+
 <template>
   <div class="app-shell" style="flex-direction: column">
       <header class="topbar">
         <div class="topbar-brand">The <span>Ledger</span> Market</div>
-        <RouterLink to="/" class="btn btn-ghost btn-small">↩ Log out</RouterLink>
+        <div style="margin-left: auto; margin-right: 15px;">{{ name }}</div>
+        <button @click="logout" class="btn btn-ghost btn-small">↩ Log out</button>
       </header>
 
       <div class="main">
@@ -16,69 +54,23 @@
           </div>
 
           <div class="product-grid">
-            <article class="ticket">
-              <div class="ticket-media">M</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Home & Living</span>
-                <h3>Hand-thrown ceramic mug</h3>
-                <p>Matte glaze, holds 12oz, made in small batches.</p>
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$24.00<span>In stock</span></div>
-                <button type="submit" class="btn btn-primary btn-small">
-                  Buy
-                </button>
-              </div>
-            </article>
 
-            <article class="ticket">
-              <div class="ticket-media">S</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Apparel</span>
-                <h3>Waxed canvas apron</h3>
-                <p>Water resistant, adjustable strap, one size.</p>
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$58.00<span>In stock</span></div>
-                <button type="submit" class="btn btn-primary btn-small">
-                  Buy
-                </button>
-              </div>
-            </article>
-
-            <article class="ticket">
+            <article class="ticket" v-for="product in products">
               <div class="ticket-media">C</div>
               <div class="ticket-body">
-                <span class="eyebrow">Pantry</span>
-                <h3>Small-batch chili oil</h3>
-                <p>Sichuan peppercorn, cold-pressed, 200ml jar.</p>
+                <span class="eyebrow">{{product.title}}</span>
+                <h3>{{product.category}}</h3>
+                <p>{{product.description}}.</p>
               </div>
               <div class="ticket-perf"></div>
               <div class="ticket-stub">
-                <div class="price-tag">$14.50<span>Only 3 left</span></div>
+                <div class="price-tag">{{product.price}}<span>{{product.quantity}}</span></div>
                 <button type="submit" class="btn btn-primary btn-small">
                   Buy
                 </button>
               </div>
             </article>
 
-            <article class="ticket">
-              <div class="ticket-media">T</div>
-              <div class="ticket-body">
-                <span class="eyebrow">Accessories</span>
-                <h3>Woven market tote</h3>
-                <p>Undyed cotton, reinforced base, 40lb capacity.</p>
-              </div>
-              <div class="ticket-perf"></div>
-              <div class="ticket-stub">
-                <div class="price-tag">$32.00<span>In stock</span></div>
-                <button type="submit" class="btn btn-primary btn-small">
-                  Buy
-                </button>
-              </div>
-            </article>
           </div>
         </div>
       </div>

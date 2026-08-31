@@ -1,14 +1,35 @@
 <script setup>
 import {ref, reactive} from 'vue'
+import api from '../Axios/api.js'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const user = reactive({
   email: null,
   password: null,
 })
 
 async function login(){
-  return 0;
+  try{
+    const response = await api.post('authentication/login', user)
+    localStorage.setItem("token", response.data.token)
+    localStorage.setItem("refreshToken", response.data.refreshToken)
+    localStorage.setItem("name", response.data.name)
+
+    if(response.data.role === "Seller"){
+      router.push('/admin/view-products')
+   }
+    else{
+      router.push('/products')
+   }
+  }
+  catch(err){
+    console.log(err)
+    alert(err)
+  }
 }
+
+
 </script>
 
 <template>
