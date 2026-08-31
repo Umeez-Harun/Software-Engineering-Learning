@@ -1,0 +1,45 @@
+﻿@using Stripe.Models;
+@model List<ProductModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="app-shell" style="flex-direction: column">
+    <header class="topbar">
+        <div class="topbar-brand">The <span>Ledger</span> Market</div>
+        <a href="login.html" class="btn btn-ghost btn-small">↩ Log out</a>
+    </header>
+
+    <div class="main">
+        <div class="content">
+            <div class="page-head">
+                <div>
+                    <p class="eyebrow">Market floor</p>
+                    <h1>Today's stalls</h1>
+                    <p>Fresh listings from sellers across the market.</p>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                @foreach (ProductModel product in @Model)
+                {
+                    <article class="ticket">
+                        <div class="ticket-media">S</div>
+                        <div class="ticket-body">
+                            <span class="eyebrow">@product.category</span>
+                            <h3>@product.name</h3>
+                            <p>@product.description</p>
+                        </div>
+                        <div class="ticket-perf"></div>
+                        <div class="ticket-stub">
+                            <div class="price-tag">$@product.price<span>In stock</span></div>
+                            <a asp-controller="Stripe" asp-action="buyNow" asp-route-productID="@product.id" class="btn btn-primary btn-small">
+                                Buy
+                            </a>
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </div>
+</div>

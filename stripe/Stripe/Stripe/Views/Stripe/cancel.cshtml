@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f6f8fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #172033;
+        }
+
+        .card {
+            width: min(92%, 480px);
+            background: white;
+            border-radius: 24px;
+            padding: 48px 42px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(20, 30, 50, 0.10);
+        }
+
+        .icon {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 28px;
+            border-radius: 50%;
+            background: #fff1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cross {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+            .cross::before,
+            .cross::after {
+                content: "";
+                position: absolute;
+                width: 4px;
+                height: 34px;
+                background: #e05252;
+                border-radius: 5px;
+                left: 13px;
+                top: -2px;
+            }
+
+            .cross::before {
+                transform: rotate(45deg);
+            }
+
+            .cross::after {
+                transform: rotate(-45deg);
+            }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+            letter-spacing: -0.7px;
+        }
+
+        .subtitle {
+            color: #697386;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .notice {
+            background: #f7f9fc;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 28px;
+            color: #697386;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .button {
+            display: block;
+            text-decoration: none;
+            background: #172033;
+            color: white;
+            padding: 15px 22px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+            .button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(23, 32, 51, 0.18);
+            }
+
+        .secondary {
+            background: #f1f3f7;
+            color: #394458;
+        }
+
+            .secondary:hover {
+                box-shadow: none;
+            }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #9aa3b2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="card">
+
+        <div class="icon">
+            <div class="cross"></div>
+        </div>
+
+        <h1>Payment Cancelled</h1>
+
+        <p class="subtitle">
+            Your payment wasn't completed. Don't worry — no order has been placed.
+        </p>
+
+        <div class="notice">
+            If you cancelled the checkout or your payment could not be completed,
+            you can safely return and try again.
+        </div>
+
+        <div class="actions">
+            <a href="/" class="button">
+                Return to Checkout
+            </a>
+
+            <a href="/" class="button secondary">
+                Back to Store
+            </a>
+        </div>
+
+        <p class="footer">
+            Need help? Contact our support team.
+        </p>
+
+    </main>
+
+</body>
+</html>

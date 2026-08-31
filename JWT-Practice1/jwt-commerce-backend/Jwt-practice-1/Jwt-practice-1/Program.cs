@@ -50,6 +50,13 @@ builder.Services.AddTransient<IJwtService, JwtService>();
     };
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Vue-Frontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod();
+    });
+});
 builder.Services.AddControllers();
 builder.Services.AddProblemDetails();
 
@@ -61,6 +68,7 @@ app.UseExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseCors("Vue-Frontend");
 app.UseRouting();
 
 

@@ -107,6 +107,7 @@ namespace Services
 
             await _userManager.UpdateAsync(user);
             userResult.refreshToken = user.refeshToken;
+            userResult.role = role;
             return userResult;
         }
 

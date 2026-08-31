@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Jwt_practice_1.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class productController : ControllerBase
@@ -17,7 +17,7 @@ namespace Jwt_practice_1.Controllers
         {
             _productService = productService;
         }
-
+        [Authorize(Roles ="Seller")]
         [HttpPost]
         public async Task<IActionResult> products(ProductRequest request)
         {
@@ -26,14 +26,14 @@ namespace Jwt_practice_1.Controllers
 
             return Ok(response);
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> products()
         {
             List<ProductResponse> products = await _productService.getAvailableProducts();
             return Ok(products);
         }
-
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> products(Guid id)
         {
@@ -44,14 +44,14 @@ namespace Jwt_practice_1.Controllers
             }
             return Ok(product);
         }
-
+        
         [HttpGet("search{value}")]
         public async Task<IActionResult> products(string value)
         {
             List<ProductResponse> products = await _productService.searchProduct(value);
             return Ok(products);
         }
-
+        [Authorize(Roles ="Seller")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Deleteproducts(Guid id)
         {

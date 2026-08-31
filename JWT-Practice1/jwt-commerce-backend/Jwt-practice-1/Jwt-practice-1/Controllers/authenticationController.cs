@@ -44,12 +44,11 @@ namespace Jwt_practice_1.Controllers
             }
             catch(Exception ex)
             {
-                return Unauthorized("Please login");
+                return Unauthorized("Please login" + ex.Message);
             }
             
         }
-
-        [HttpGet]
+        [HttpGet("logout")]
         public async Task<IActionResult> signOut()
         {
             await _authenticationService.signOut();
