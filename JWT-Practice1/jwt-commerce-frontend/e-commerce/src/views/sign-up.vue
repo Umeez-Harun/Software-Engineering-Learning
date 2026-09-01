@@ -1,15 +1,28 @@
 <script setup>
+  import api from '@/Axios/api';
   import { ref, reactive} from 'vue'
+  import { useRouter } from 'vue-router';
 
+  const router = useRouter()
   const account = reactive({
-    fullName: null,
+    name: null,
     email: null,
     password: null,
     role: null
   })
 
   async function createAccount(){
-    return;
+    try{
+      const response = await api.post('/authentication/sign-up', account)
+      router.push('/')
+    }
+    catch(err){
+      alert(err.response.data.email)
+      console.log(err.response.data.password)
+      console.log(err.response.data.role)
+      console.log(err.response.data.name)
+      console.log(err.response.data.email)
+    }
   } 
 </script>
 
@@ -40,14 +53,14 @@
           <div>
             <div class="role-select">
               <label class="role-card">
-                <input v-model="account.role" type="radio" value="buyer"/>
+                <input v-model="account.role" type="radio" :value=1 />
                 <span class="role-icon">B</span>
                 <span class="role-name">Buyer: </span>
                 <span class="role-desc">Browse & purchase</span>
                 <span class="role-stamp">Chosen</span>
               </label>
               <label class="role-card">
-                <input v-model="account.role" type="radio" value="seller" />
+                <input v-model="account.role" type="radio" :value=0 />
                 <span class="role-icon">S</span>
                 <span class="role-name">Seller: </span>
                 <span class="role-desc">List & manage stock</span>
@@ -57,7 +70,7 @@
 
             <div class="form-field">
               <label>Full name</label>
-              <input v-model="account.fullName" type="text" placeholder="Jordan Reyes" />
+              <input v-model="account.name" type="text" placeholder="Jordan Reyes" />
             </div>
             <div class="form-field">
               <label>Email address</label>

@@ -20,6 +20,16 @@ const router = createRouter({
       component: ()=> import('../views/product-listings.vue')
     },
     {
+      path: '/checkout/success',
+      name: 'checkout',
+      component: () => import('../views/paymentConfirmation.vue')
+    },
+    {
+      path: '/checkout/failed',
+      name: 'checkout-failed',
+      component: ()=> import('../views/paymentFailed.vue')
+    },
+    {
       path: '/admin',
       name: 'admin',
       component: ()=> import('../views/admin-layout.vue'),

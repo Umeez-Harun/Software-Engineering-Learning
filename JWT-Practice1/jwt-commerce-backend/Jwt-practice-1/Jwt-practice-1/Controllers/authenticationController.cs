@@ -54,7 +54,6 @@ namespace Jwt_practice_1.Controllers
             await _authenticationService.signOut();
             return NoContent();
         }
-
         [HttpPost("create-role/{roleName}")]
         public async Task<IActionResult> createRole(string roleName)
         {
